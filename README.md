@@ -1,77 +1,138 @@
-# Personal Finance Tracker
+# 💰 SmartFinTrack – ML-Powered Personal Finance Tracker
 
-A modern, secure, and user-friendly personal finance tracker built with Streamlit. Track your income, expenses, budgets, get advanced analytics, personalized recommendations, and generate tax reports—all in one place.
-
----
-
-## 🚀 Features
-- Secure authentication (bcrypt password hashing)
-- Add, edit, and delete transactions (income/expense)
-- Set and manage budgets by category
-- Realistic demo data generator
-- Financial forecasting (RandomForest, SVM, XGBoost)
-- Advanced analytics: trends, savings/burn rate, anomaly detection
-- Personalized spending recommendations
-- Weekly/monthly reports, CSV download
-- Year-end tax report with deductible highlights
-- Customizable analytics dashboard
-- Modern Streamlit UI with Lottie animations
+A secure, intelligent, and modular personal finance tracker built with **Streamlit**, featuring **expense forecasting**, **budget planning**, **interactive dashboards**, and **downloadable tax reports**. Designed for real-world use and portfolio-quality presentation.
 
 ---
 
-## ⚠️ Note
-This app is designed for **small-scale usage (under 50 users)**. For demo or personal use, data is stored securely in a shared SQLite database. **Large-scale or commercial deployment would require migration to a cloud database** (e.g., PostgreSQL, MySQL, or a managed cloud service).
+## 🚀 Live Demo
+
+▶️ **Try the app now**:  
+🔗 [https://smart-finance-track-ak21.streamlit.app/](https://smart-finance-track-ak21.streamlit.app/)
+
+> ⚠️ **Please switch to Light Mode** in Streamlit for the best visual experience.  
+> Streamlit → Settings (⚙️ top right) → Theme → Light
 
 ---
 
-## 🛠️ Setup Instructions
+## 📌 Key Features
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/yourusername/expense-tracker.git
-cd expense-tracker
+### 🔐 User Authentication
+- Secure signup/login with **bcrypt** password hashing
+- Multi-user support with per-user data isolation
+
+### 💸 Expense & Budget Management
+- Add, view, and delete **income/expense transactions**
+- Set and track **budgets** by category
+- Reset all data (with password confirmation)
+- Download full transaction history as CSV
+
+### 📈 ML-Based Forecasting
+- Predict future daily expenses using:
+  - ✅ Random Forest
+  - ✅ SVM
+  - ✅ XGBoost
+- Compare model accuracy with **MAE** and **R² Score**
+- Forecast for next 7–90 days
+
+### 📊 Financial Insights & Analytics
+- Weekly and monthly reports
+- Spending trends and category breakdowns
+- Savings rate, burn rate, and anomaly detection
+- Personalized recommendations based on user behavior
+
+### 🧾 Tax Report Generator
+- Select year to generate tax-ready summaries
+- Detects deductible categories
+- Download report as CSV
+
+---
+
+## 🧠 Tech Stack
+
+| Component         | Technology |
+|------------------|------------|
+| UI Framework      | Streamlit  |
+| Backend Database  | SQLite     |
+| ML Models         | scikit-learn, XGBoost |
+| Charts/Graphs     | Plotly     |
+| Auth & Security   | bcrypt     |
+| Deployment        | Streamlit Cloud |
+
+---
+
+## 📁 Folder Structure
+
+```
+smart-finance-track/
+├── main.py               # Streamlit app entry point
+├── auth.py               # Authentication logic
+├── db.py                 # SQLite database layer
+├── ml_model.py           # ML forecasting logic
+├── transactions.py       # Budget/expense management
+├── styles.py             # CSS for visual tweaks
+├── finance.db            # SQLite DB file (optional)
+├── requirements.txt      # App dependencies
+├── README.md             # Project overview
+└── .streamlit/config.toml (optional light/dark config)
 ```
 
-### 2. Install Requirements
+---
+
+## 📦 Installation (Local)
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Akshith2112/smart-finance-track.git
+cd smart-finance-track
+```
+
+### 2. Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Run Locally
+### 3. Run the App
+
 ```bash
 streamlit run main.py
 ```
 
-### 4. Deploy on Streamlit Cloud
-- Push your code to GitHub.
-- Go to [Streamlit Cloud](https://share.streamlit.io/), connect your repo, and deploy.
-- Make sure `requirements.txt` is present in the repo root.
+---
+
+## ⚠️ Notes
+
+- This app uses **SQLite**, which is suitable for up to ~50 users
+- All user data is filtered by `username`, ensuring full data separation
+- `finance.db` can be cleared/reset by each user from the UI
+- Deployed on **Streamlit Cloud**, where the DB may reset if the app restarts
+
+
+
+
+## 📜 License
+
+MIT License.  
+Feel free to use, modify, and enhance for educational or demo purposes.
 
 ---
 
-## 💡 Usage
-- Sign up and log in securely.
-- Add your income and expenses.
-- Set budgets and track your progress.
-- Use the "Demo Data" button to generate realistic sample data for testing/forecasting.
-- Explore analytics, recommendations, and tax reports from the sidebar.
+## 👨‍💻 Author
 
-### Demo Data & Accuracy
-- Demo data is tuned for realistic patterns and model accuracy (R² 0.85–0.95 for best models).
-- For real-world use, accuracy will depend on your actual financial patterns.
+Made with ❤️ by **Akshith**  
+Final Year CSE (AI & ML) Student  
+🔗 [GitHub](https://github.com/Akshith2112) | 🔗 [LinkedIn](https://linkedin.com/in/your-link)
 
 ---
 
-## 📦 Requirements
-See `requirements.txt` for all dependencies:
-- streamlit, pandas, numpy, scikit-learn, plotly, bcrypt, xgboost, streamlit-option-menu, streamlit-lottie
+## ✨ Future Ideas
+
+- Replace SQLite with Supabase or PostgreSQL
+- Add email/OTP-based login
+- Build a mobile version with REST API
+- Add NLP-based auto-categorization of transactions
 
 ---
 
-## 🤝 Contributing
-Pull requests are welcome! For major changes, please open an issue first to discuss what you’d like to change.
-
----
-
-## 📄 License
-[Specify your license here] 
+[![Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://smart-finance-track-ak21.streamlit.app/)
