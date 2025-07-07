@@ -122,7 +122,7 @@ Feel free to use, modify, and enhance for educational or demo purposes.
 
 Made with ❤️ by **Akshith**  
 Final Year CSE (AI & ML) Student  
-🔗 [GitHub](https://github.com/Akshith2112) | 🔗 [LinkedIn](https://linkedin.com/in/your-link)
+🔗 [GitHub](https://github.com/Akshith2112) | 🔗 [LinkedIn](https://www.linkedin.com/in/akshith-boini-89693b298)
 
 ---
 
