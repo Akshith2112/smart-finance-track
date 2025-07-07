@@ -94,7 +94,7 @@ LOTTIE_FORECAST = {
 }
 
 st.set_page_config(
-    page_title="Personal Finance Tracker",
+    page_title="SmartFinTrack – ML-Powered Personal Finance Tracker",
     page_icon="💰",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -111,36 +111,44 @@ if 'alerts' not in st.session_state:
 
 # --- User Authentication ---
 def show_login_signup():
-    st.sidebar.title("Welcome to Finance Tracker!")
-    choice = st.sidebar.radio("Choose an option:", ["Login", "Sign Up"])
+    st.markdown("""
+        <h1 style='text-align:center; font-size:2.8rem; font-weight:800; color:#2196F3; margin-top: 8vh; margin-bottom: 2rem;'>Welcome to SmartFinTrack</h1>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+        <div style='display: flex; justify-content: center; align-items: flex-start; margin-top: 0;'>
+            <div style='min-width: 350px; max-width: 400px; width: 100%; background: #fff; padding: 2rem 2rem 2.5rem 2rem; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.07);'>
+    """, unsafe_allow_html=True)
+    choice = st.radio("Choose an option:", ["Login", "Sign Up"], horizontal=True)
     if choice == "Login":
-        with st.sidebar.form("Login_Form"):
-            st.subheader("Login")
-            username = st.text_input("Username", key="login_username")
-            password = st.text_input("Password", type="password", key="login_password")
-            login_button = st.form_submit_button("Login")
-            if login_button:
-                if not username or not password:
-                    st.error("Please enter both username and password.")
-                elif verify_user(username, password):
-                    st.session_state.logged_in = True
-                    st.session_state.username = username
-                    st.success(f"Welcome back, {username}! 🎉")
-                    st.rerun()
-                else:
-                    st.error("Invalid username or password.")
+        st.subheader("Login")
+        username = st.text_input("Username", key="login_username")
+        password = st.text_input("Password", type="password", key="login_password")
+        login_button = st.button("Login")
+        if login_button:
+            if not username or not password:
+                st.error("Please enter both username and password.")
+            elif verify_user(username, password):
+                st.session_state.logged_in = True
+                st.session_state.username = username
+                st.success(f"Welcome back, {username}! 🎉")
+                st.rerun()
+            else:
+                st.error("Invalid username or password.")
     else:
-        with st.sidebar.form("SignUp_Form"):
-            st.subheader("Sign Up")
-            new_username = st.text_input("New Username", key="signup_username")
-            new_password = st.text_input("New Password", type="password", key="signup_password")
-            signup_button = st.form_submit_button("Sign Up")
-            if signup_button:
-                success, msg = add_user(new_username, new_password)
-                if success:
-                    st.success(msg + " Please login.")
-                else:
-                    st.error(msg)
+        st.subheader("Sign Up")
+        new_username = st.text_input("New Username", key="signup_username")
+        new_password = st.text_input("New Password", type="password", key="signup_password")
+        signup_button = st.button("Sign Up")
+        if signup_button:
+            success, msg = add_user(new_username, new_password)
+            if success:
+                st.success(msg + " Please login.")
+            else:
+                st.error(msg)
+    st.markdown("""
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
 
 # --- Main Application Logic ---
 if not st.session_state.logged_in:
@@ -194,7 +202,7 @@ else:
                 st.info("Reset cancelled.")
                 st.rerun()
 
-    st.markdown("<h1 class='fade-in'>💰 Personal Finance Tracker</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='fade-in'>💰 SmartFinTrack – ML-Powered Personal Finance Tracker</h1>", unsafe_allow_html=True)
 
     # --- Dashboard Page ---
     if selected == "Dashboard":
