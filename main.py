@@ -419,14 +419,13 @@ else:
             st.session_state["forecast_model_choice"] = "RandomForest"
         selected_models = st.multiselect("Choose Forecasting Models to Compare", model_options, default=st.session_state["forecast_selected_models"], key="forecast_selected_models")
         model_choice = st.selectbox("Choose Forecasting Model to View", selected_models, key="forecast_model_choice")
-        # Add demo data button for user 'akshith'
-        if st.session_state.username == "akshith":
-            from transactions import add_demo_transactions
-            demo_n = st.number_input("How many demo transactions to add?", min_value=20, max_value=180, value=60, step=1, key="demo_n")
-            if st.button(f"Add {demo_n} Demo Transactions for Forecasting"):
-                add_demo_transactions("akshith", int(demo_n))
-                st.success(f"{demo_n} demo transactions added for user akshith. Now you can forecast!")
-                st.rerun()
+        # Demo Data for everyone (now in Forecast section)
+        from transactions import add_demo_transactions
+        demo_n = st.number_input("How many demo transactions to add?", min_value=20, max_value=180, value=60, step=1, key="demo_n_forecast")
+        if st.button(f"Add {demo_n} Demo Transactions for Forecasting"):
+            add_demo_transactions(st.session_state.username, int(demo_n))
+            st.success(f"{demo_n} demo transactions added for user {st.session_state.username}. Now you can forecast!")
+            st.rerun()
         current_transactions = load_transactions(st.session_state.username)
         expense_data = current_transactions[current_transactions['type'] == 'expense'].copy()
         unique_expense_days = expense_data['date'].nunique()
